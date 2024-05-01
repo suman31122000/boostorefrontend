@@ -1,5 +1,5 @@
 
 
-const Api = 'http://localhost:3000';
+const Api = 'https://bookstorebackend-95mx.onrender.com';
 
 export default Api;
