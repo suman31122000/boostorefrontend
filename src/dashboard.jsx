@@ -9,7 +9,7 @@ const Dashboard = () => {
     const handledashboard=()=>{location.reload()}
     const handledsignout=()=>{navigate('/')}
     const [rentals, setRentals] = useState([]);
-    const [state, setState] = useState([false, false, false, false, false]);
+    const [state, setState] = useState([false, false, false, false, true]);
 
     const handleUpload = () => {
         setState(prevState => {
@@ -153,6 +153,8 @@ const chartOptions = {
                 <button onClick={handledsignout} className="hover:bg-slate-200 hover:text-black h-10">Sign Out</button>
             </div>
             <div className="bg-slate-200 h-full w-full">
+                <div>
+                {state[4] &&(
             <motion.div 
             className="max-w-screen-md mx-auto p-8"
             initial={{ opacity: 0, y: -50 }}
@@ -187,7 +189,8 @@ const chartOptions = {
             <footer className="text-center mt-8 text-sm">
                 <p>© 2024 Your Bookstore</p>
             </footer>
-        </motion.div>
+        </motion.div>)}
+        </div>
             {state[0] && (
                 <form onChange={handleChange}>
                 <div className="flex flex-col text-2xl items-center">
