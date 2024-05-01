@@ -35,7 +35,8 @@ const AddBookForm = () => {
     };
 
     return (
-        <div className="max-w-md mx-auto mt-8 p-6 bg-slate-200 rounded-lg shadow-lg">
+        <div className='bg-slate-700 h-screen w-full' /*style={{backgroundImage: 'url(image13.jpg)',backgroundRepeat:'no-repeat',backgroundPosition:'centre'}}*/>
+        <div className="max-w-md mx-auto pt-8 p-6 bg-slate-200 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">Add Book</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
@@ -60,6 +61,7 @@ const AddBookForm = () => {
                 </div>
                 <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Add Book</button>
             </form>
+        </div>
         </div>
     );
 };

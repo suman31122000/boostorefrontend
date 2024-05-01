@@ -44,8 +44,9 @@ const BookRentingForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <h2 className="text-2xl mb-4">Rent a Book</h2>
+    <div className='bg-slate-700 h-screen w-full '>
+    <div className="max-w-md mx-auto border-2 p-4 text-xl bg-slate-200">
+      <h2 className="text-2xl mb-4 text-2xl font-bold">Rent a Book</h2>
       {error && <div className="text-red-500 mb-4">Book not found</div>}
       {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -99,8 +100,9 @@ const BookRentingForm = () => {
             className="w-full border rounded-md py-2 px-3"
           />
         </div>
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md">Rent</button>
+        <button className="bg-blue-700 rounded-md h-10 w-32 font-semibold text-white mt-4">Rent</button>
       </form>
+    </div>
     </div>
   );
 };
