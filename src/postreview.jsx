@@ -17,8 +17,12 @@ const PostComment = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(`${Api}/api/v1/comment`, formData); 
+           const result= await axios.post(`${Api}/api/v1/comment`, formData); 
+        //   const result=  await axios.post('http://localhost:8000/api/v1/comment')
             alert('Comment posted successfully!');
+            console.log(result);
+            return result.status(200).send("comment posted");
+            
             
             setFormData({ name: '', bookname: '', comment: '' });
             redirect('/');

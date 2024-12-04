@@ -14,7 +14,8 @@ const Reviews = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${Api}/api/v1/getcomment`); 
-                setReviews(response.data);
+                // const response=  await axios.get('http://localhost:8000/api/v1/getcomment')
+                setReviews(response.data.data);
             } catch (error) {
                 console.error('Error fetching reviews:', error);
             }
@@ -22,6 +23,7 @@ const Reviews = () => {
 
         fetchData();
     }, []);
+    
     return (
         <div id="classes" className="h-[75vh] w-full overflow-hidden bg-slate-100">
             <div className="max-w-4xl break-words h-[10%] w-full pl-20 text-red-950">
