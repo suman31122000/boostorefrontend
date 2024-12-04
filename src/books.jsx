@@ -36,7 +36,7 @@ const Books = () => {
     const fetchData = async () => {
         try {
             // const response = await axios.get(`${Api}/find`);
-            const response = await axios.get(`http://localhost:8000/api/v1/getbook?skip=${skip}&limit=${limit}`);
+            const response = await axios.get(`${Api}/api/v1/getbook?skip=${skip}&limit=${limit}`);
             setSkip(skip + limit);
             setBooks([...books, ...response.data.books]);
             setRemaining(response.data.remaining);
