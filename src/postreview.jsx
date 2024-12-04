@@ -17,7 +17,7 @@ const PostComment = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(`${Api}/comment`, formData); 
+            await axios.post(`${Api}/api/v1/comment`, formData); 
             alert('Comment posted successfully!');
             
             setFormData({ name: '', bookname: '', comment: '' });

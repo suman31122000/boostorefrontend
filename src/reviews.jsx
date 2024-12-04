@@ -13,7 +13,7 @@ const Reviews = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${Api}/getcomment`); 
+                const response = await axios.get(`${Api}/api/v1/getcomment`); 
                 setReviews(response.data);
             } catch (error) {
                 console.error('Error fetching reviews:', error);
