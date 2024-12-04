@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const Landing1 = () => {
     const navigate = useNavigate();
@@ -8,12 +9,18 @@ const Landing1 = () => {
         navigate('/shop');
     };
 
-    const handlesell = () => {
-        navigate('/sell');
-    };
-
     const handleadmin = () => {
         navigate('/dashboard');
+    };
+    const [search, setSearch] = useState('');
+    const handlechange = (e) => {
+        setSearch(()=>[e.target.value]);
+    };
+    const handlesearch = () => {
+        if(search === ''){
+            alert('Please enter a search term');
+            return;}
+        navigate(`/searchbook/${search}`);
     };
 
     return (
@@ -26,7 +33,6 @@ const Landing1 = () => {
                     <button className="hover-style">HOME</button>
                     <button className="hover-style">ABOUT</button>
                     <button onClick={handleshop} className="hover-style">SHOP</button>
-                    <button onClick={handlesell} className="hover-style">SELL YOUR BOOK</button>
                     <button className="hover-style">BLOG</button>
                 </div>
                 <div>
@@ -46,8 +52,8 @@ const Landing1 = () => {
                     <span className="pt-8">Find and read more books you will love ,and krac of the books you want to read.be</span>
                     <span>part of the world largest community of books lover on bookreads</span>
                     <div className="pt-4">
-                        <input className="h-10 w-60" placeholder="Search your book"></input>
-                        <button className="bg-blue-700 rounded-md h-10 w-32 font-semibold text-white mt-4">Search</button>
+                        <input onChange={handlechange} value={search} className="h-10 w-60" placeholder="Search your book"></input>
+                        <button onClick={handlesearch} className="bg-blue-700 rounded-md h-10 w-32 font-semibold text-white mt-4">Search</button>
                     </div>
                 </div>
                 <div className="flex-1" style={{backgroundImage: 'url(./image12.jpg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', maxWidth: '100%', maxHeight: '100%'}}></div>

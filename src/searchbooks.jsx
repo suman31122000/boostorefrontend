@@ -1,31 +1,37 @@
-import React from 'react';
-import { useState,useEffect } from 'react';
-import axios from 'axios';
-const Otherbooks = () => {
-    const [books, setBooks] = useState([]);
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
+const Searchbooks = () => {
+    const [books, setBooks] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const { query } = useParams();
+    console.log(query);
     useEffect(() => {
-    
         const fetchData = async () => {
             try {
                 // const response = await axios.get(`${Api}/find`);
-                const response = await axios.get(`http://localhost:8000/api/v1/getbook`);
-                console.log(response.data.books);
-                setBooks(response.data.books.slice(5, 8));
+                const response = await axios.get(`${Api}/api/v1/bookdetails/${query}`);
+                setBooks(response.data.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
 
-        fetchData();
-    }, []);
-
+        if (query) {
+            if(query===''){
+                fetchData();                
+            }
+            fetchData();
+        }
+    }, [query]); 
     return (
-        <div id="classes" className="h-[100vh] w-full bg-slate-100 overflow-y-hidden">
-            <div className="max-w-4xl break-words h-[1%] w-full pl-20 text-red-950">
-                <span className="text-4xl font-bold">Trending Books</span>
-            </div>
-            <div className="h-[40%] w-full flex grid grid-cols-3 gap-5 p-20">
+        <div>
+            <h1>Search Results</h1>
+            {books.length === 0 ? (
+                <p>No books found</p>
+            ) : (
+                <div className="h-[60%] w-full flex grid sm:grid-cols-5 grid-cols-2 p-8 gap-2 ">
                 {books.map((books, index) => (
                      <div key={index} className="relative flex flex-col justify-center items-center bg-gray-50 shadow-xl p-2 hover:translate-x-0 hover:translate-y-0 hover:scale-105 hover:transition-all hover:duration-700 h-[500px] hover:bg-gray-200" >
                      <img src={books.image} alt="Book" className="w-[300px] h-[300px] p-5" />
@@ -49,10 +55,13 @@ const Otherbooks = () => {
 
                      
                  </div>
+
+                    
                 ))}
             </div>
+            )}
         </div>
     );
-}
+};
 
-export default Otherbooks;
+export default Searchbooks;

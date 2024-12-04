@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Api from "./api";
 import { motion } from 'framer-motion';
+import { AddBookForm } from "./adminsPage/addbooks";
+import UpdatePage from "./adminsPage/updatePage";
 
 const Dashboard = () => {
    const navigate=useNavigate();
@@ -192,68 +194,11 @@ const chartOptions = {
         </motion.div>)}
         </div>
             {state[0] && (
-                <form onChange={handleChange}>
-                <div className="flex flex-col text-2xl items-center">
-                    <div>
-                        <span className="font-bold text-4xl">Upload A Book!</span>
-                    </div>
-                    <div className="flex mt-20 gap-8 font-semibold">
-                        <div className="flex flex-col">
-                            <span>Book Title</span>
-                            <input type="text" name="name" className="border-2" />
-                            <span>Book Image Url</span>
-                            <input type="text" className="border-2" name="link"/>
-                        </div>
-                        <div className="flex flex-col">
-                            <span>Author Name</span>
-                            <input type="text" className="border-2" name="author"/>
-                            <span>Book Category</span>
-                            <input type="text" className="border-2" name="category"/>
-                        </div>
-                    </div>
-                    <div className="flex flex-col font-semibold">
-                        <span>Book Description</span>
-                        <input type="text" className="border-2" name="description" />
-                        <span>Book Pdf Link</span>
-                        <input type="text" className="border-2" name="link" />
-                    </div>
-                    <button type="submit" onClick={handleSubmit} className="bg-blue-700 rounded-md h-10 w-32 font-semibold text-white mt-4">ADD</button>
-                </div>
-                </form>
+                <AddBookForm/>
             )}
+            
             {state[1] && (
-                <form onChange={handlemanageChange}>
-                <div className="flex flex-col text-2xl items-center">
-                    <div>
-                        <span className="font-bold text-4xl">Manage Books</span>
-                    </div>
-                    <div className="mt-8">
-                        <span className="font-bold text-2xl">Edit Book</span>
-                        <div className="flex mt-4 gap-8 font-semibold">
-                            <div className="flex flex-col">
-                                <span>Book Title</span>
-                                <input type="text" className="border-2" />
-                                <span>Book Image Url</span>
-                                <input type="text" className="border-2" />
-                            </div>
-                            <div className="flex flex-col">
-                                <span>Author Name</span>
-                                <input type="text" className="border-2" />
-                                <span>Book Category</span>
-                                <input type="text" className="border-2" />
-                            </div>
-                        </div>
-                        <div className="flex flex-col mt-4 font-semibold">
-                            <span>Book Description</span>
-                            <input type="text" className="border-2" />
-                            <span>Book Pdf Link</span>
-                            <input type="text" className="border-2" />
-                        </div>
-                    </div>
-                    <button onClick={handlemanageSubmit} type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mt-4">Add Book</button>
-
-                </div>
-                </form>
+                <UpdatePage/>
             )}
             {state[2] && rentals && rentals.length > 0 && (
   <div className=" w-full grid grid-cols-3 items-center bg-slate-200">
